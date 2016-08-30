@@ -33,9 +33,10 @@ public class DriverFactory{
 		WebDriver driver = null ;
 		switch(type){
 		 	case FIREFOX:
-		 		ProfilesIni profile = new ProfilesIni();
-		 		FirefoxProfile myprofile = profile.getProfile("QATools");
-		 		driver = new FirefoxDriver(myprofile);
+		 		driver = new FirefoxDriver();
+//		 		ProfilesIni profile = new ProfilesIni();
+//		 		FirefoxProfile myprofile = profile.getProfile("QATools");
+//		 		driver = new FirefoxDriver(myprofile);
 		 		break;
 		 	case CHROME:
 		 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");

@@ -2,7 +2,9 @@ package com.ecareers.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.ClickAction;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.BasePage;
 
@@ -20,6 +22,10 @@ public class CareerSecondWizard extends BasePage {
 	@FindBy(id ="relativeType") WebElement dropDown_RelativeType;
 	@FindBy(id = "interviewedInJawwalYes") WebElement yes_PreviouslyInterviewed;
 	@FindBy(id = "interviewedInJawwalNO") WebElement no_PreviouslyInterviewed;
+	@FindBy(id = "interviewJob") WebElement field_InterviewJob;
+	@FindBy(id = "interviewDate") WebElement field_InterviewDate;
+	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
+
 	
 	public CareerSecondWizard(WebDriver driver){
 		super(driver);
@@ -40,7 +46,10 @@ public class CareerSecondWizard extends BasePage {
 	}
 	
 	public void setYes_WorkOutside(){
-		clickElement(yes_WorkOutside);
+			clickElement(yes_WorkOutside);
+
+		yes_WorkOutside.click();
+
 	}
 
 	public void setNO_WorkOutside(){
@@ -53,6 +62,7 @@ public class CareerSecondWizard extends BasePage {
 	
 
 	public void setYes_HasRelatives(){
+		yes_HasRelatives.click();
 		clickElement(yes_HasRelatives);
 	}
 
@@ -76,6 +86,19 @@ public class CareerSecondWizard extends BasePage {
 		clickElement(no_PreviouslyInterviewed);
 	}
 	
+	public void setText_InterviewJob(String text){
+		setElementText(field_InterviewJob,text);
+	}
+	
+	public void setText_InterviewDate(String text){
+		setElementText(field_InterviewDate,text);
+	}
+	
+
+	public void clickNext(){
+		clickElement(button_Next);
+	}
+	
 	public void fillFlow(){
 		
 		selectJobTitle1("24");
@@ -84,10 +107,14 @@ public class CareerSecondWizard extends BasePage {
 		setYes_WorkOutside();
 		selectStartDate("26");
 		setYes_HasRelatives();
+		wait.until(ExpectedConditions.elementToBeClickable(field_RelativeName));
 		setText_RelativeName("Ameqw");
 		selectRelativeType("304");
 		setYes_PreviouslyInterviewed();
-		
+		setText_InterviewJob("Developer");
+		setText_InterviewDate("21/7/2016");
+		scrollDown(button_Next);
+		clickNext();
 	}
 	
 

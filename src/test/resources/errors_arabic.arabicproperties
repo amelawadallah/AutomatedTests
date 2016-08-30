@@ -1,0 +1,4 @@
+emptyEmail_validation = "البريد الإلكتروني مطلوب"
+emptyPassword_validation = "كلمة المرور مطلوبة"
+wrongEmail_Format = "البريد الإلكتروني غير صحيح"
+wrongCredentials = "معلومات الدخول غير صحيحة !"

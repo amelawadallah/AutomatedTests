@@ -13,15 +13,7 @@ public class TestData{
 		};
 	}
 	
-	@DataProvider(name = "loginData")
-	public  static Object[][] loginData(){
-		return new Object[][]{
-				{"amal.awadallah@jawwal.ps", "777T27kO77", null},
-				{"fghga_abozcc_wesam@hotmail.com", "123456", "اسم المستخدم أو كلمة المرور خاطئة" },
-//				{"", "123456", "يجب ادخال اسم المستخدم" },
-//				{"test@test.com", "", "يجب ادخال كلمة المرور" }				
-		};
-	}
+	
 	
 	@DataProvider(name = "registerData")
 	public static Object [][] registerData(){

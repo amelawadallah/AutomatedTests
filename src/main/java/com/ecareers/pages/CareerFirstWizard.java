@@ -51,8 +51,8 @@ public class CareerFirstWizard extends BasePage {
 	}
 	
 	public void selectGender(String value){
-		dropDown_Gender.sendKeys("أنثى");
-		//selectValueInList(dropDown_Gender, value);
+//		dropDown_Gender.sendKeys("أنثى");
+		selectValueInList(dropDown_Gender, value);
 	}
 
 	public void selectNationality(String value){
@@ -104,14 +104,15 @@ public class CareerFirstWizard extends BasePage {
 		selectGender("13");
 		selectNationality("14");
 		selectMaritalStatus("16");
-		selectBirthPlace("21");
+		selectBirthPlace("191");
 		setText_BirthDate("22/8/2016");
-		selectCountry("143");
+		selectCountry("191");
 		setText_Address("ramallah");
 		setText_PhoneNumber("022892959");
 		setText_Fax("022654789");
 		setText_LinkedIN("https://www.linkedin.com/in/amel-awadallah-47579227");
 		clickNext();
+		
 		
 	}
 }

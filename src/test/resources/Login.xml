@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="LoginTest" >
-    
-      <test name="Tests 1">
-     
-       <classes>
-            <class name="com.ecareer.tests.LoginTest"/>
-          
-           	 	
-         
-        </classes>
-   	 </test>
-    
+<suite name="Login Tests" parallel="classes" >
+    <parameter name="language" value="en"/>
+    <test name="Test 1">
 
+        <classes>
+            <class name="com.ecareers.tests.LoginTest">
+                <methods>
+			        <include name="testLoginSuccess" />
+			        <include name="testWrongCredentials" />
+			        <include name="testfieldValidation" />
+			        </methods>
+			        </class>
+	</classes>
+    </test>
    
+
 </suite>
