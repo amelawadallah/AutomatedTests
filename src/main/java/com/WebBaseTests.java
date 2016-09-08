@@ -26,7 +26,7 @@ public class WebBaseTests{
 	   driver.manage().timeouts().implicitlyWait(BASE_TIMEOUT_SECONDS, TimeUnit.SECONDS); 
 	}
 	
-	@AfterClass(alwaysRun = true)
+//	@AfterClass(alwaysRun = true)
 	public void teardown(){
 		driver.close();
 	}

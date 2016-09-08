@@ -1,6 +1,8 @@
 package com.ecareers.pages;
 import com.BasePage;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +26,21 @@ public class CareerFirstWizard extends BasePage {
 	@FindBy(id = "addCareerBtn") WebElement button_AddCareerApp;
 	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
 	
+	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[8]/div/span[1]/button") WebElement iconCalendar;
+	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
+	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
+	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th/button") WebElement arrow_previous;
+	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthYear;
+	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthMonth;
+	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
+	
+	
+	
+
+
+			   
+		
+   
 	public CareerFirstWizard(WebDriver driver){
 		super(driver);
 		this.PAGE_TITLE="Jawwal Career";
@@ -57,6 +74,7 @@ public class CareerFirstWizard extends BasePage {
 
 	public void selectNationality(String value){
 		selectValueInList(dropDown_Nationality, value);
+	
 	}
 	
 	public void selectMaritalStatus(String value){
@@ -67,8 +85,8 @@ public class CareerFirstWizard extends BasePage {
 		selectValueInList(dropDown_BirthPlace, value);
 	}
 	
-	public void setText_BirthDate(String text){
-		setElementText(field_BirthDate,text);
+	public void setText_BirthDate(){
+		pickPreviousDate(iconCalendar, calendarTitle, arrow_previous, birthYear, birthMonth, birthDay);
 	}
 	
 	public void selectCountry(String value){
@@ -105,7 +123,7 @@ public class CareerFirstWizard extends BasePage {
 		selectNationality("14");
 		selectMaritalStatus("16");
 		selectBirthPlace("191");
-		setText_BirthDate("22/8/2016");
+		setText_BirthDate();
 		selectCountry("191");
 		setText_Address("ramallah");
 		setText_PhoneNumber("022892959");

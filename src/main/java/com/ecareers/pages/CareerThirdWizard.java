@@ -25,6 +25,17 @@ public class CareerThirdWizard extends BasePage{
 	@FindBy(id = "haveDrivingLicenseYes") WebElement yes_DrivingLicense;
 	@FindBy(id = "haveDrivingLicenseNo") WebElement no_DrivingLicense;
 	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
+	@FindBy(xpath="(//button[@type='button'])[21]") WebElement testDate;
+	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[7]/div/span[1]/button") WebElement picktDate;
+
+	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[8]/div/span[1]/button") WebElement iconCalendar;
+	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
+	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
+	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th/button") WebElement arrow_previous;
+	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthYear;
+	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthMonth;
+	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
+	
 	
 	public CareerThirdWizard(WebDriver driver){
 		super(driver);
@@ -60,8 +71,8 @@ public class CareerThirdWizard extends BasePage{
 		selectTextInList(dropDown_Appreciation, text);
 	}
 	
-	public void setText_GraduationDate(String text){
-		setElementText(field_GraduationDate,text);
+	public void setText_GraduationDate(){
+		pickPreviousDate(iconCalendar, calendarTitle, arrow_previous, birthYear, birthMonth, birthDay);
 	}
 	
 	public void setText_GPA(String text){
@@ -108,13 +119,13 @@ public class CareerThirdWizard extends BasePage{
 		selectMajor("هندسة انظمة الحاسوب");
 		selectMinor("ادارة اعمال");
 		selectInstitutionCountry("النمسا");
-		setText_GraduationDate("10/10/2005");
+		setText_GraduationDate();
 		selectApprecication("جيد جدا");
 		setText_GPA("5");
-		selectArabicLangLevel("جيد جدا");
-		selectEngLangLevel("جيد جدا");
+		selectArabicLangLevel("متمرس");
+		selectEngLangLevel("متمرس");
 		selectOtherLanguages("أخرى");
-		selectOtherLangLevel("جيد جدا");
+		selectOtherLangLevel("متمرس");
 		setText_OtherLanguage("armen");
 		
 		setYes_DrivingLicense();

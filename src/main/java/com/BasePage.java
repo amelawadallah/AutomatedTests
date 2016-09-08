@@ -83,6 +83,28 @@ public class BasePage{
    }
    
 
+	public void pickPreviousDate(WebElement openCalendar, WebElement navigateCurrentTitle, WebElement previousArrow, WebElement chooseYear, WebElement chooseMonth, WebElement chooseDay){
+		openCalendar.click();
+		navigateCurrentTitle.click();
+		navigateCurrentTitle.click();
+		previousArrow.click();
+		chooseYear.click();
+		chooseMonth.click();
+		chooseDay.click();
+			
+	}
+   
+
+	public void pickFutureDate(WebElement openCalendar, WebElement navigateCurrentTitle, WebElement nextArrow, WebElement chooseYear, WebElement chooseMonth, WebElement chooseDay){
+		openCalendar.click();
+		navigateCurrentTitle.click();
+		navigateCurrentTitle.click();
+		nextArrow.click();
+		chooseYear.click();
+		chooseMonth.click();
+		chooseDay.click();
+			
+	}
    
     public void scrollDown(WebElement element){
 //    	JavascriptExecutor jse = (JavascriptExecutor)driver;

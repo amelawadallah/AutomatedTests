@@ -23,7 +23,7 @@ public class LoginTest extends WebBaseTests{
 		
 	}
 
-	@Test( dataProvider = "loginData" , dataProviderClass = TestLoginData.class)
+//	@Test( dataProvider = "loginData" , dataProviderClass = TestLoginData.class)
 	public void testLoginSuccess (String email , String password ,String errorType) throws IOException{
 		
 		loginPg.loadPage();
@@ -32,7 +32,7 @@ public class LoginTest extends WebBaseTests{
 		
 	}
 	
-	@Test( dataProvider = "wrongLoginData" , dataProviderClass = TestLoginData.class)
+//	@Test( dataProvider = "wrongLoginData" , dataProviderClass = TestLoginData.class)
 	public void testWrongCredentials (String email , String password ,String errorType) throws IOException{
 		
 		loginPg.loadPage();

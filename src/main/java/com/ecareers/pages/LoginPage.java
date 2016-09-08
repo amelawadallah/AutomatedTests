@@ -52,7 +52,8 @@ public class LoginPage extends  BasePage{
 	
 	
 	   public String getProp(String type) throws IOException{
-		   	File file = new File("src/test/resources/errors_arabic");
+//		   	File file = new File("src/test/resources/errors_arabic.arabicproperties");
+		   	File file = new File("src/test/resources/local.properties");
 			FileInputStream fileInput =  new FileInputStream(file);
 			Properties prop = new Properties();
 			prop.load(fileInput);

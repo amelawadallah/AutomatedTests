@@ -1,4 +1,5 @@
 package com.ecareers.tests;
+import java.awt.AWTException;
 import java.io.IOException;
 
 import org.openqa.selenium.support.PageFactory;
@@ -7,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.WebBaseTests;
 import com.ecareers.pages.CareerFirstWizard;
+import com.ecareers.pages.CareerFourthWizard;
 import com.ecareers.pages.CareerSecondWizard;
 import com.ecareers.pages.CareerThirdWizard;
 import com.ecareers.pages.LoginPage;
@@ -17,6 +19,7 @@ public class CareerTest extends WebBaseTests{
 	CareerFirstWizard careerFirstWzrd;
 	CareerSecondWizard careerSecondWzrd;
 	CareerThirdWizard careerThirdWzrd;
+	CareerFourthWizard careerFourthWzrd;
 
 	@BeforeClass(alwaysRun = true)
 	public void setup() throws IOException{
@@ -24,6 +27,7 @@ public class CareerTest extends WebBaseTests{
 		careerFirstWzrd = PageFactory.initElements(driver, CareerFirstWizard.class);
 		careerSecondWzrd = PageFactory.initElements(driver, CareerSecondWizard.class);
 		careerThirdWzrd = PageFactory.initElements(driver, CareerThirdWizard.class);
+		careerFourthWzrd = PageFactory.initElements(driver, CareerFourthWizard.class);
 	}
 	
 
@@ -51,6 +55,15 @@ public class CareerTest extends WebBaseTests{
 	
 		
 		careerThirdWzrd.fillFlow();
+		
+		
+	}
+	
+	@Test(dependsOnMethods = "testCareer3")
+	public void testCareer4 () throws InterruptedException, AWTException{
+	
+		
+		careerFourthWzrd.fillFlow();
 		
 		
 	}
