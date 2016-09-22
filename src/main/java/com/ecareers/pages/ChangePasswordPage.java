@@ -14,7 +14,9 @@ public class ChangePasswordPage extends BasePage{
 	@FindBy(id = "submitbtn") WebElement button_ChangePassword;
 	@FindBy(id = "backBtn") WebElement button_Back;
 	@FindBy(id = "changePassDiv") WebElement navigate_ChangePassword;
-	@FindBy(xpath="html/body/div[3]/div/div/div[2]/p") WebElement message_ChangePassword ; 
+
+	@FindBy(xpath = "//p") WebElement message_ChangePassword;
+	@FindBy(xpath = "//div[2]/button[2]") WebElement button_Accept;
 	
 	public  ChangePasswordPage(WebDriver driver){
 		super(driver) ; 
@@ -42,6 +44,10 @@ public class ChangePasswordPage extends BasePage{
 		clickElement(navigate_ChangePassword);	
 	}
 	
+	public void click_Accept(){
+		clickElement(button_Accept);
+	}
+	
 	public void changePassword(String oldPass, String newPass , String confirmPass )throws InterruptedException {
 		navigate_ChangePassword() ;
 		setText_OldPassword(oldPass);
@@ -51,6 +57,7 @@ public class ChangePasswordPage extends BasePage{
 		successMessage  = message_ChangePassword.getText(); 
 		Assert.assertEquals(successMessage, "تم تغيير كلمة المرور بنجاح");
 		System.out.println("Password update successfully "+ successMessage );
+		click_Accept();
 	}
 
 }

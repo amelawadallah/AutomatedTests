@@ -21,7 +21,7 @@ public class CareerSecondWizard extends BasePage {
 	@FindBy(id = "relativeName") WebElement field_RelativeName;
 	@FindBy(id ="relativeType") WebElement dropDown_RelativeType;
 	@FindBy(id = "interviewedInJawwalYes") WebElement yes_PreviouslyInterviewed;
-	@FindBy(id = "interviewedInJawwalNO") WebElement no_PreviouslyInterviewed;
+	@FindBy(id = "interviewedInJawwalNo") WebElement no_PreviouslyInterviewed;
 	@FindBy(id = "interviewJob") WebElement field_InterviewJob;
 	@FindBy(id = "interviewDate") WebElement field_InterviewDate;
 	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
@@ -92,7 +92,6 @@ public class CareerSecondWizard extends BasePage {
 	}
 	
 	public void setNO_PreviouslyInterviewed(){
-		clickElement(no_PreviouslyInterviewed);
 		clickElement(no_PreviouslyInterviewed);
 	}
 	

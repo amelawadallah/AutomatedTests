@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CareerFirstWizard extends BasePage {
 	
@@ -48,6 +49,7 @@ public class CareerFirstWizard extends BasePage {
 	}
 
 	public void clickAddCareer(){
+		wait.until(ExpectedConditions.elementToBeClickable(button_AddCareerApp));
 		clickElement(button_AddCareerApp);
 	}
 	
@@ -110,15 +112,16 @@ public class CareerFirstWizard extends BasePage {
 	}
 	
 	public void clickNext(){
-		clickElement(button_Next);
+		//clickElement(button_Next);
+		clickButtonChrome(button_Next);
 	}
 	
 	public void fillFlow(){
 		clickAddCareer();
-		setText_FirstName("jam");
-		setText_SecondName("ali");
-		setText_ThirdName("moh");
-		setText_LastName("loay");
+		setText_FirstName("samer");
+		setText_SecondName("name");
+		setText_ThirdName("middle");
+		setText_LastName("test");
 		selectGender("13");
 		selectNationality("14");
 		selectMaritalStatus("16");

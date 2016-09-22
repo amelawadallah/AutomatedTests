@@ -16,8 +16,9 @@ public class ChangePasswordTest extends WebBaseTests{
 	HashMap<String,String> passwordMap; 
 
 	@Factory(dataProvider = "changePasswordData", dataProviderClass= TestData.class)
-	public ChangePasswordTest(String oldPass , String newPass, String confirmPass){
+	public ChangePasswordTest(String email ,String oldPass , String newPass, String confirmPass){
 		passwordMap = new HashMap<String, String>();
+		passwordMap.put("email", email);
 		passwordMap.put("oldPassword", oldPass);
 		passwordMap.put("newPassword", newPass);
 		passwordMap.put("confirmPassword", confirmPass);
@@ -33,7 +34,7 @@ public class ChangePasswordTest extends WebBaseTests{
 	public void testChangePassword() throws InterruptedException {
 		changePasswordPg.loadPage();
 		Thread.sleep(4000);
-		loginPg.loginToProfile("amal.awadallah@jawwal.ps","ufuj88k8Y8");
+		loginPg.loginToProfile(passwordMap.get("email"),passwordMap.get("oldPassword"));
 		Thread.sleep(4000);
 		changePasswordPg.changePassword(passwordMap.get("oldPassword"), passwordMap.get("newPassword"),passwordMap.get("confirmPassword"));
 	}

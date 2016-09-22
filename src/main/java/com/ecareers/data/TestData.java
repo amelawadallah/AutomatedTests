@@ -18,14 +18,14 @@ public class TestData{
 	@DataProvider(name = "registerData")
 	public static Object [][] registerData(){
 		return new Object[][]{
-				{"sa", "DaASAvid", "2", "78722254879633", "amSSal.awadallah@jawwal.ps", "0587797877878"},
+				{"noor", "test", "2", "18224879633", "noor@testjawwal.com", "0598121878"},
 		};
 	}
 	
 	@DataProvider(name = "changePasswordData")
 	public static Object [][] changePasswordData(){
 		return new Object[][]{
-				{"ufuj88k8Y8", "123456", "123456"}
+				{"noor@testjawwal.com","123456", "123456", "123456"}
 		};
 	}
 }

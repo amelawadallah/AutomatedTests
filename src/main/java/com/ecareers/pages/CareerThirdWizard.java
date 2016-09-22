@@ -28,10 +28,10 @@ public class CareerThirdWizard extends BasePage{
 	@FindBy(xpath="(//button[@type='button'])[21]") WebElement testDate;
 	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[7]/div/span[1]/button") WebElement picktDate;
 
-	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[8]/div/span[1]/button") WebElement iconCalendar;
-	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
-	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
-	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th/button") WebElement arrow_previous;
+	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/span/button") WebElement iconCalendar;
+	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
+	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
+	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/ul/li/div/table/thead/tr/th/button") WebElement arrow_previous;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthYear;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthMonth;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
@@ -109,7 +109,8 @@ public class CareerThirdWizard extends BasePage{
 	}
 	
 	public void clickNext(){
-		clickElement(button_Next);
+//		clickElement(button_Next);
+		clickButtonChrome(button_Next);
 	}
 	
 	public void fillFlow(){

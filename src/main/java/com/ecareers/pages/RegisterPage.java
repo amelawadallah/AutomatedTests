@@ -17,7 +17,8 @@ public class RegisterPage extends BasePage{
 	@FindBy(id = "mobile") WebElement field_MobileNumber;
 	@FindBy(id = "submitBtn") WebElement button_SignUp;
 	@FindBy(id = "backBtn") WebElement button_Back;
-	@FindBy(xpath = "html/body/div[3]/div/div/div[2]/p") WebElement message_successRegistration;
+	@FindBy(xpath = "//p") WebElement message_successRegistration;
+	@FindBy(xpath = "//div[2]/button[2]") WebElement button_Accept;
 	
 	public RegisterPage(WebDriver driver){
 		super(driver);
@@ -54,6 +55,10 @@ public class RegisterPage extends BasePage{
 		clickElement(button_SignUp);
 	}
 	
+	public void click_Accept(){
+		clickElement(button_Accept);
+	}
+	
 	public void register(String firstName , String lastName, String idType, String idNumber, String email, String mobileNumber) throws InterruptedException  {
 		Thread.sleep(5000);
 		setText_FirstName(firstName);
@@ -65,6 +70,7 @@ public class RegisterPage extends BasePage{
     	click_SignUp();
     	wait.until(ExpectedConditions.visibilityOf(message_successRegistration));
     	Assert.assertEquals(message_successRegistration.getText(),"تمت عملية التسجيل بنجاح . لقد تم ارسال كلمة المرور الى بريدك الالكتروني كما وتم إرسال رسالة نصية قصيرة إلى هاتفك المحمول\n\nوشكراً");
-    	System.out.println(driver.findElement(By.xpath("html/body/div[3]/div/div/div[2]/p")).getText());
+    	System.out.println(message_successRegistration.getText());
+    	click_Accept();
 	}
 }
