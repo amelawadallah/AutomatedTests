@@ -1,11 +1,16 @@
 package com.ecareers.pages;
-import org.openqa.selenium.By;
+import java.io.IOException;
+
+import javax.mail.MessagingException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
 import com.BasePage;
+import com.google.common.base.CaseFormat;
 
 public class RegisterPage extends BasePage{
 
@@ -19,6 +24,21 @@ public class RegisterPage extends BasePage{
 	@FindBy(id = "backBtn") WebElement button_Back;
 	@FindBy(xpath = "//p") WebElement message_successRegistration;
 	@FindBy(xpath = "//div[2]/button[2]") WebElement button_Accept;
+	
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[2]/span") WebElement validation_EmptyFirstName;
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[3]/span") WebElement validation_EmptyLastName;
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[4]/span") WebElement validation_EmptyIdType;		
+	
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[5]/span[1]") WebElement validation_EmptyIdNumber;		
+	@FindBy(xpath="	.//*[@id='userMainDiv']/form/fieldset/div[2]/div[5]/span[2]") WebElement validation_RegisteredIdNumber;
+	
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[6]/span[1]") WebElement validation_EmptyEmail;		
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[6]/span[2]") WebElement validation_WrongEmailFormat;		
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[6]/span[3]") WebElement validation_RegisteredEmail;
+	
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[7]/span[2]") WebElement validation_EmptyMobileNumber;		
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[7]/span[3]") WebElement validation_WrongMobileNumber;
+	@FindBy(xpath=".//*[@id='userMainDiv']/form/fieldset/div[2]/div[7]/span[4]") WebElement validation_RegisteredMobileNumber;		
 	
 	public RegisterPage(WebDriver driver){
 		super(driver);
@@ -68,9 +88,40 @@ public class RegisterPage extends BasePage{
     	setText_RegisterEmail(email);
     	setText_MobileNumber(mobileNumber);
     	click_SignUp();
-    	wait.until(ExpectedConditions.visibilityOf(message_successRegistration));
-    	Assert.assertEquals(message_successRegistration.getText(),"تمت عملية التسجيل بنجاح . لقد تم ارسال كلمة المرور الى بريدك الالكتروني كما وتم إرسال رسالة نصية قصيرة إلى هاتفك المحمول\n\nوشكراً");
+
+	}
+	
+	public void CheckSuccessfulRegistration() throws IOException{
+		wait.until(ExpectedConditions.visibilityOf(message_successRegistration));
+    	Assert.assertEquals(message_successRegistration.getText(),getProp("successRegistration"));
     	System.out.println(message_successRegistration.getText());
     	click_Accept();
+		
 	}
+	
+	public void checkEmptyFieldsErrors(String errorType ) throws IOException, MessagingException{
+		switch(errorType){
+		case "EmptyfieldsValidation":
+			System.out.println("Switch case......" );
+			Assert.assertEquals( getValidationMsg(validation_EmptyFirstName),getProp("emptyFirstName") );
+			Assert.assertEquals( getValidationMsg(validation_EmptyLastName),getProp("emptyLastName") );
+			Assert.assertEquals( getValidationMsg(validation_EmptyIdType), getProp("emptyIdType"));	
+			Assert.assertEquals( getValidationMsg(validation_EmptyIdNumber),getProp("emptyIdNumber"));
+			Assert.assertEquals( getValidationMsg(validation_EmptyEmail), getProp("emptyEmail"));
+			Assert.assertEquals( getValidationMsg(validation_EmptyMobileNumber),getProp("emptyMobileNumber") );
+			break ;
+		case "RegisteredUserData":
+			Assert.assertEquals( getValidationMsg(validation_RegisteredIdNumber), getProp("registerdIdNumber"));
+			Assert.assertEquals( getValidationMsg(validation_RegisteredEmail), getProp("registeredEmail"));
+			Assert.assertEquals( getValidationMsg(validation_RegisteredMobileNumber), getProp("registeredMobileNumber"));
+			break ;
+		
+		case "WrongFormats":
+			Assert.assertEquals( getValidationMsg(validation_WrongEmailFormat), getProp("wrongEmailFormat"));
+			Assert.assertEquals( getValidationMsg(validation_WrongMobileNumber), getProp("wrongMobileFormat"));
+			break;
+		default:
+			System.out.println(".......Debugging.....");
+		}		
+	}	
 }

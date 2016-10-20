@@ -1,16 +1,20 @@
 package com.ecareers.pages;
+import com.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import com.BasePage;
 
-public class CareerFirstWizard extends BasePage {
+public class ProFirstWizard extends BasePage {
 	
 	@FindBy(id = "firstName") WebElement field_FirstName;
 	@FindBy(id = "secondName") WebElement field_SecondName;
 	@FindBy(id = "thirdName") WebElement field_ThirdName;
 	@FindBy(id = "lastName") WebElement field_LastName;
+	@FindBy(id = "firstNameEn") WebElement field_FirstNameEn;
+	@FindBy(id = "secondNameEn") WebElement field_SecondNameEn;
+	@FindBy(id = "thirdNameEn") WebElement field_ThirdNameEn;
+	@FindBy(id = "lastNameEn") WebElement field_LastNameEn;
 	@FindBy(id = "gender") WebElement dropDown_Gender;
 	@FindBy(id = "nationality") WebElement dropDown_Nationality;
 	@FindBy(id ="maritalStatus") WebElement dropDown_MaritalStatus;
@@ -21,26 +25,25 @@ public class CareerFirstWizard extends BasePage {
 	@FindBy(id = "phoneNumber") WebElement field_PhoneNumber;
 	@FindBy(id = "fax") WebElement field_Fax;
 	@FindBy(id = "linkedin") WebElement field_LinkedIN;
-	@FindBy(id = "addCareerBtn") WebElement button_AddCareerApp;
-	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
-	
-	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[8]/div/span[1]/button") WebElement iconCalendar;
+	@FindBy(id = "addGoProBtn") WebElement button_AddProApp;
+	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;	
+	@FindBy(xpath="//div[@id='birthDateDiv']/span/button") WebElement iconCalendar;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th/button") WebElement arrow_previous;
-	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthYear;
+	@FindBy(xpath="(//button[@type='button'])[20]") WebElement birthYear;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthMonth;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
-		
-	public CareerFirstWizard(WebDriver driver){
+    
+	public ProFirstWizard(WebDriver driver){
 		super(driver);
 		this.PAGE_TITLE="Jawwal Career";
 		this.PAGE_URL="http://10.102.5.244/ecareer/#/career";
 	}
 
-	public void clickAddCareer(){
-		wait.until(ExpectedConditions.elementToBeClickable(button_AddCareerApp));
-		clickElement(button_AddCareerApp);
+	public void clickAddPro(){
+		wait.until(ExpectedConditions.elementToBeClickable(button_AddProApp));
+		clickElement(button_AddProApp);
 	}
 	
 	public void setText_FirstName(String text){
@@ -59,13 +62,34 @@ public class CareerFirstWizard extends BasePage {
 		setElementText(field_LastName,text);
 	}
 	
+	public void setText_FirstNameEn(String text){
+		setElementText(field_FirstNameEn,text);
+	}
+	
+	public void setText_SecondNameEn(String text){
+		setElementText(field_SecondNameEn,text);
+	}
+	
+	public void setText_ThirdNameEn(String text){
+		setElementText(field_ThirdNameEn,text);
+	}
+	
+	public void setText_LastNameEn(String text){
+		setElementText(field_LastNameEn,text);
+	}
+	
 	public void selectGender(String value){
 		selectValueInList(dropDown_Gender, value);
 	}
 
 	public void selectNationality(String value){
+		
 		selectValueInList(dropDown_Nationality, value);
 	
+	}
+	
+	public void selectNationality2(String text){
+		selectTextInList(dropDown_Nationality,text);
 	}
 	
 	public void selectMaritalStatus(String value){
@@ -105,20 +129,21 @@ public class CareerFirstWizard extends BasePage {
 	}
 	
 	public void fillFlow(){
-		clickAddCareer();
-		setText_FirstName("samer");
-		setText_SecondName("name");
-		setText_ThirdName("middle");
-		setText_LastName("test");
+		clickAddPro();
+		setText_FirstName("اكرم");
+		setText_SecondName("محمود");
+		setText_ThirdName("مالك");
+		setText_LastName("عمر");
+		setText_FirstNameEn("samer");
+		setText_SecondNameEn("ali");
+		setText_ThirdNameEn("saeed");
+		setText_LastNameEn("omer");
 		selectGender("13");
-		selectNationality("14");
 		selectMaritalStatus("16");
-		selectBirthPlace("191");
 		setText_BirthDate();
 		selectCountry("191");
 		setText_Address("ramallah");
 		setText_PhoneNumber("022892959");
-		setText_Fax("022654789");
 		setText_LinkedIN("https://www.linkedin.com/in/amel-awadallah-47579227");
 		clickNext();
 	}

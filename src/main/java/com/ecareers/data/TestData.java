@@ -1,9 +1,11 @@
 package com.ecareers.data;
+import java.io.IOException;
+import javax.mail.MessagingException;
 import org.testng.annotations.DataProvider;
+import com.ecareers.pages.CheckEmail;
 
 public class TestData{
 
-	//args are urls and titles
 	@DataProvider(name = "websites")
 	public  Object[][] pages(){
 		return new Object[][]{
@@ -13,19 +15,14 @@ public class TestData{
 		};
 	}
 	
-	
-	
-	@DataProvider(name = "registerData")
-	public static Object [][] registerData(){
-		return new Object[][]{
-				{"noor", "test", "2", "18224879633", "noor@testjawwal.com", "0598121878"},
-		};
-	}
+
 	
 	@DataProvider(name = "changePasswordData")
-	public static Object [][] changePasswordData(){
+	public static Object [][] changePasswordData() throws MessagingException, IOException{
+		CheckEmail checkEmail = new CheckEmail();
+		String password = checkEmail.getPassword();
 		return new Object[][]{
-				{"noor@testjawwal.com","123456", "123456", "123456"}
+				{"sari@testjawwal.com","123456", "123456", "123456"}
 		};
 	}
 }

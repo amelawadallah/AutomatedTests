@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import com.BasePage;
 
-public class CareerFirstWizard extends BasePage {
+public class Convert2Career extends BasePage {
 	
 	@FindBy(id = "firstName") WebElement field_FirstName;
 	@FindBy(id = "secondName") WebElement field_SecondName;
@@ -21,9 +21,10 @@ public class CareerFirstWizard extends BasePage {
 	@FindBy(id = "phoneNumber") WebElement field_PhoneNumber;
 	@FindBy(id = "fax") WebElement field_Fax;
 	@FindBy(id = "linkedin") WebElement field_LinkedIN;
-	@FindBy(id = "addCareerBtn") WebElement button_AddCareerApp;
+	@FindBy(xpath = ".//*[@id='appTable']/tbody/tr/td[4]/span/a") WebElement button_Convert2Career;
+	@FindBy(xpath = "//div[2]/button") WebElement button_YesConvert;
+	@FindBy(xpath = "//button[3]") WebElement button_NoConvert;
 	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
-	
 	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[8]/div/span[1]/button") WebElement iconCalendar;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
@@ -31,16 +32,31 @@ public class CareerFirstWizard extends BasePage {
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthYear;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthMonth;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
-		
-	public CareerFirstWizard(WebDriver driver){
+		   
+	public Convert2Career(WebDriver driver){
 		super(driver);
 		this.PAGE_TITLE="Jawwal Career";
-		this.PAGE_URL="http://10.102.5.244/ecareer/#/career";
+		this.PAGE_URL="http://10.102.5.244/ecareer/#/home";
 	}
 
-	public void clickAddCareer(){
-		wait.until(ExpectedConditions.elementToBeClickable(button_AddCareerApp));
-		clickElement(button_AddCareerApp);
+	public void clickConvert2Career(){
+		wait.until(ExpectedConditions.elementToBeClickable(button_Convert2Career));
+		clickElement(button_Convert2Career);
+	}
+	
+	public String getCurrentAppType(){
+		String appType;
+		appType =button_Convert2Career.getText();
+		return appType;
+	}
+	
+	public void clickCancelConvert(){
+		clickElement(button_NoConvert);
+	}
+	
+	public void clickProceedConvert(){
+		wait.until(ExpectedConditions.elementToBeClickable(button_YesConvert));
+		clickElement(button_YesConvert);
 	}
 	
 	public void setText_FirstName(String text){
@@ -104,22 +120,11 @@ public class CareerFirstWizard extends BasePage {
 		clickButtonChrome(button_Next);
 	}
 	
-	public void fillFlow(){
-		clickAddCareer();
-		setText_FirstName("samer");
-		setText_SecondName("name");
-		setText_ThirdName("middle");
-		setText_LastName("test");
-		selectGender("13");
-		selectNationality("14");
-		selectMaritalStatus("16");
-		selectBirthPlace("191");
-		setText_BirthDate();
-		selectCountry("191");
-		setText_Address("ramallah");
-		setText_PhoneNumber("022892959");
-		setText_Fax("022654789");
-		setText_LinkedIN("https://www.linkedin.com/in/amel-awadallah-47579227");
-		clickNext();
+	public void fillFlow() throws InterruptedException{
+		clickConvert2Career();
+		Thread.sleep(1000);
+		clickProceedConvert();
+		Thread.sleep(1000);
+		clickProceedConvert();
 	}
 }

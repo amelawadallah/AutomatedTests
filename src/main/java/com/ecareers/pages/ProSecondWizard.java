@@ -4,28 +4,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.BasePage;
 
-public class CareerThirdWizard extends BasePage{
+public class ProSecondWizard extends BasePage{
 	
 	@FindBy(id = "degree") WebElement dropDown_Degree;
 	@FindBy(id = "institution") WebElement dropDown_Institution;
-	@FindBy(id = "college") WebElement dropDown_College;
 	@FindBy(id = "major") WebElement dropDown_Major;
-	@FindBy(id = "minor") WebElement dropDown_Minor;
-	@FindBy(id ="institutionCountry") WebElement dropDown_InstitutionCountry;
 	@FindBy(id ="appreciation") WebElement dropDown_Appreciation;
-	@FindBy(id = "graduationDate") WebElement field_GraduationDate;
 	@FindBy(id = "gpa") WebElement field_GPA;
-	@FindBy(id ="arabicLanguage") WebElement dropDown_ArabicLanguage;
-	@FindBy(id ="englishLanguage") WebElement dropDown_EnglishLanguage;
-	@FindBy(id ="otherLanguage") WebElement dropDown_OtherLanguage;
-	@FindBy(id = "otherLanguageText") WebElement field_OtherLanguageText;
-	@FindBy(id ="otherLanguageLevel") WebElement dropDown_OtherLanguageLevel;
-	@FindBy(id = "haveDrivingLicenseYes") WebElement yes_DrivingLicense;
-	@FindBy(id = "haveDrivingLicenseNo") WebElement no_DrivingLicense;
+	@FindBy(id = "relocateToDifferentCitiesYes") WebElement yes_Relocate;
+	@FindBy(id = "relocateToDifferentCitiesNo") WebElement no_Relocate;
+	@FindBy(id = "changeResidenceYes") WebElement yes_ChangeResidence;
+	@FindBy(id = "changeResidenceNo") WebElement no_ChangeResidence;	
+	@FindBy(id = "interviewedInJawwalYes") WebElement yes_PreviouslyInterviewed;
+	@FindBy(id = "interviewedInJawwalNo") WebElement no_PreviouslyInterviewed;
 	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
 	@FindBy(xpath="(//button[@type='button'])[21]") WebElement testDate;
 	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[7]/div/span[1]/button") WebElement picktDate;
-
 	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/span/button") WebElement iconCalendar;
 	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
 	@FindBy(xpath="//div[@id='appWizard']/div/section/fieldset/div[7]/div/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
@@ -35,7 +29,7 @@ public class CareerThirdWizard extends BasePage{
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
 	
 	
-	public CareerThirdWizard(WebDriver driver){
+	public ProSecondWizard(WebDriver driver){
 		super(driver);
 		this.PAGE_TITLE = "";
 		this.PAGE_URL = "";
@@ -48,62 +42,42 @@ public class CareerThirdWizard extends BasePage{
 	public void selectInstitution(String text){
 		selectTextInList(dropDown_Institution, text);
 	}
-	
-	public void selectCollege(String text){
-		selectTextInList(dropDown_College, text);
-	}
-	
+
 	public void selectMajor(String text){
 		selectTextInList(dropDown_Major, text);
-	}
-	
-	public void selectMinor(String text){
-		selectTextInList(dropDown_Minor, text);
-	}
-	
-	public void selectInstitutionCountry(String text){
-		selectTextInList(dropDown_InstitutionCountry, text);
 	}
 	
 	public void selectApprecication(String text){
 		selectTextInList(dropDown_Appreciation, text);
 	}
 	
-	public void setText_GraduationDate(){
-		pickPreviousDate(iconCalendar, calendarTitle, arrow_previous, birthYear, birthMonth, birthDay);
-	}
-	
 	public void setText_GPA(String text){
 		setElementText(field_GPA, text);
 	}
 	
-	public void selectArabicLangLevel(String text){
-		selectTextInList(dropDown_ArabicLanguage, text);
-	}
-	
-	public void selectEngLangLevel(String text){
-		selectTextInList(dropDown_EnglishLanguage, text);
-	}
-	
-	public void selectOtherLanguages(String text){
-		selectTextInList(dropDown_OtherLanguage,text);
-	}
-	
-	public void setText_OtherLanguage(String text){
-		setElementText(field_OtherLanguageText, text);
-	}
-	
-	public void selectOtherLangLevel(String text){
-		selectTextInList(dropDown_OtherLanguageLevel, text);
-	}
-	
-	public void setYes_DrivingLicense(){
-		yes_DrivingLicense.click();
-		clickElement(yes_DrivingLicense);
+	public void setYes_Relocate(){
+		yes_Relocate.click();
+		clickElement(yes_Relocate);
 	}
 
-	public void setNo_DrivingLicense(){
-		clickElement(no_DrivingLicense);
+	public void setNo_Relocate(){
+		clickElement(no_Relocate);
+	}
+	
+	public void setYes_Residence(){
+		clickElement(yes_ChangeResidence);
+	}
+	
+	public void setNO_Residence(){
+		clickElement(no_ChangeResidence);
+	}
+	
+	public void setYes_PreviouslyInterviewed(){
+		clickElement(yes_PreviouslyInterviewed);
+	}
+	
+	public void setNO_PreviouslyInterviewed(){
+		clickElement(no_PreviouslyInterviewed);
 	}
 	
 	public void clickNext(){
@@ -113,20 +87,14 @@ public class CareerThirdWizard extends BasePage{
 	public void fillFlow(){
 		selectDegree("بكالوريوس");
 		selectInstitution("كلية الامه");
-		selectCollege("الهندسة");
 		selectMajor("هندسة انظمة الحاسوب");
-		selectMinor("ادارة اعمال");
-		selectInstitutionCountry("النمسا");
-		setText_GraduationDate();
 		selectApprecication("جيد جدا");
 		setText_GPA("5");
-		selectArabicLangLevel("متمرس");
-		selectEngLangLevel("متمرس");
-		selectOtherLanguages("أخرى");
-		selectOtherLangLevel("متمرس");
-		setText_OtherLanguage("armen");
-		setYes_DrivingLicense();
+		setYes_PreviouslyInterviewed();
+		setYes_Relocate();
+		setYes_Residence();
 		clickNext();
 	}
+
 }
 

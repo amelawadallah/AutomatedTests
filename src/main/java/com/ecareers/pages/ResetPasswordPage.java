@@ -17,7 +17,6 @@ public class ResetPasswordPage extends BasePage{
 		super(driver);	
 		this.PAGE_TITLE="Jawwal Career";
 		this.PAGE_URL= "http://10.102.5.244/ecareer/#/resetPass";
-		
 	}
 	
 	public void setText_ResetEmail(String text){

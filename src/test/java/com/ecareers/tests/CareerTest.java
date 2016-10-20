@@ -29,42 +29,27 @@ public class CareerTest extends WebBaseTests{
 		careerThirdWzrd = PageFactory.initElements(driver, CareerThirdWizard.class);
 		careerFourthWzrd = PageFactory.initElements(driver, CareerFourthWizard.class);
 	}
-	
 
 	@Test
 	public void testCareer () throws InterruptedException{
 		loginPg.loadPage();
-		loginPg.loginToProfile("noor@testJawwal.com", "123456");
+		loginPg.loginToProfile("sari@testjawwal.com", "123456");
 		Thread.sleep(2000);
-		careerFirstWzrd.fillFlow();
-		
-		
+		careerFirstWzrd.fillFlow();		
 	}
 	
 	@Test(dependsOnMethods = "testCareer")
 	public void testCareer2 () throws InterruptedException{
-	
-		
 		careerSecondWzrd.fillFlow();
-		
-		
 	}
 	
 	@Test(dependsOnMethods = "testCareer2")
 	public void testCareer3 () throws InterruptedException{
-	
-		
 		careerThirdWzrd.fillFlow();
-		
-		
 	}
 	
 	@Test(dependsOnMethods = "testCareer3")
 	public void testCareer4 () throws InterruptedException, AWTException{
-	
-		
 		careerFourthWzrd.fillFlow();
-		
-		
 	}
 }

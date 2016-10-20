@@ -1,4 +1,15 @@
-emptyEmail_validation = "البريد الإلكتروني مطلوب"
-emptyPassword_validation = "كلمة المرور مطلوبة"
-wrongEmail_Format = "البريد الإلكتروني غير صحيح"
-wrongCredentials = "معلومات الدخول غير صحيحة !"
+emptyEmail = البريد الإلكتروني مطلوب
+emptyPassword = كلمة المرور مطلوبة
+wrongEmailFormat = البريد الإلكتروني غير صحيح
+wrongCredentials = معلومات الدخول غير صحيحة !
+
+emptyFirstName= الاسم الأول مطلوب
+emptyLastName = اسم العائلة مطلوب
+emptyIdType = نوع الوثيقة مطلوب
+emptyIdNumber = رقم الوثيقة مطلوب
+emptyMobileNumber =  رقم الهاتف المحمول مطلوب
+wrongMobileFormat = رقم الهاتف المحمول يجب أن يتكون من 9 إلى 14 خانة
+registeredMobileNumber = رقم الهاتف المحمول مستخدم مسبقاً
+registerdIdNumber = رقم الوثيقة مستخدم مسبقاً
+registeredEmail = البريد الإلكتروني مستخدم مسبقاً
+successRegistration = تمت عملية التسجيل بنجاح . لقد تم ارسال كلمة المرور الى بريدك الالكتروني كما وتم إرسال رسالة نصية قصيرة إلى هاتفك المحمول\n\nوشكراً

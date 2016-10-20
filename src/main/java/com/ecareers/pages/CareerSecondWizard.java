@@ -1,11 +1,8 @@
 package com.ecareers.pages;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.ClickAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import com.BasePage;
 
 public class CareerSecondWizard extends BasePage {
@@ -55,10 +52,8 @@ public class CareerSecondWizard extends BasePage {
 	}
 	
 	public void setYes_WorkOutside(){
-			clickElement(yes_WorkOutside);
-
+		clickElement(yes_WorkOutside);
 		yes_WorkOutside.click();
-
 	}
 
 	public void setNO_WorkOutside(){
@@ -69,7 +64,6 @@ public class CareerSecondWizard extends BasePage {
 		selectValueInList(dropDown_StartDate, value);
 	}
 	
-
 	public void setYes_HasRelatives(){
 		yes_HasRelatives.click();
 		clickElement(yes_HasRelatives);
@@ -108,8 +102,7 @@ public class CareerSecondWizard extends BasePage {
 		clickElement(button_Next);
 	}
 	
-	public void fillFlow(){
-		
+	public void fillFlow(){	
 		selectJobTitle1("24");
 		selectJobTitle2("23");
 		selectJobTitle3("24");
@@ -117,7 +110,7 @@ public class CareerSecondWizard extends BasePage {
 		selectStartDate("26");
 		setYes_HasRelatives();
 		wait.until(ExpectedConditions.elementToBeClickable(field_RelativeName));
-		setText_RelativeName("Ameqw");
+		setText_RelativeName("Amer");
 		selectRelativeType("304");
 		setNO_PreviouslyInterviewed();
 //		setYes_PreviouslyInterviewed();
@@ -126,6 +119,4 @@ public class CareerSecondWizard extends BasePage {
 		scrollDown(button_Next);
 		clickNext();
 	}
-	
-
 }

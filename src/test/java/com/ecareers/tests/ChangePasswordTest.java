@@ -33,9 +33,7 @@ public class ChangePasswordTest extends WebBaseTests{
 	@Test
 	public void testChangePassword() throws InterruptedException {
 		changePasswordPg.loadPage();
-		Thread.sleep(4000);
-		loginPg.loginToProfile(passwordMap.get("email"),passwordMap.get("oldPassword"));
-		Thread.sleep(4000);
+		loginPg.loginToProfile(passwordMap.get("email"),passwordMap.get("oldPassword"));	
 		changePasswordPg.changePassword(passwordMap.get("oldPassword"), passwordMap.get("newPassword"),passwordMap.get("confirmPassword"));
 	}
 }

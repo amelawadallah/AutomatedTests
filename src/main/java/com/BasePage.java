@@ -1,7 +1,6 @@
 package com;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -9,13 +8,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.ClickAction;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import com.thoughtworks.selenium.webdriven.commands.Click;
-import com.thoughtworks.selenium.webdriven.commands.ClickAt;
 
 public class BasePage{
 
@@ -26,7 +21,7 @@ public class BasePage{
 	
 	public BasePage(WebDriver driver){
 		this.driver = driver ;
-		wait = new WebDriverWait(driver, 5);
+		wait = new WebDriverWait(driver, 1000);
 	}
 
 	public void loadPage(){
@@ -67,21 +62,28 @@ public class BasePage{
     
     public void clickRadioButton(WebElement element){
     	element.click();
-    
-    }
-    
+    }  
     
     public String getPopupMsg(WebElement element){
  	   String message = element.getText();
- 	   return message ;
- 	   
+ 	   return message ;  
     }
     
    public String getValidationMsg(WebElement element){
 	   String message = element.getText();
 	   return message ;   
-   }
+    }
    
+   
+   public static String getProp(String type) throws IOException{
+	   	File file = new File("src/test/resources/errors_arabic.arabicproperties");
+//	   	File file = new File("src/test/resources/local.properties");
+		FileInputStream fileInput =  new FileInputStream(file);
+		Properties prop = new Properties();
+		prop.load(fileInput);
+		String message = prop.getProperty(type);
+		return new String(message.getBytes("ISO-8859-1"), "UTF-8");
+	   }
 
 	public void pickPreviousDate(WebElement openCalendar, WebElement navigateCurrentTitle, WebElement previousArrow, WebElement chooseYear, WebElement chooseMonth, WebElement chooseDay){
 		openCalendar.click();
@@ -90,11 +92,9 @@ public class BasePage{
 		previousArrow.click();
 		chooseYear.click();
 		chooseMonth.click();
-		chooseDay.click();
-			
+		chooseDay.click();		
 	}
-   
-
+  
 	public void pickFutureDate(WebElement openCalendar, WebElement navigateCurrentTitle, WebElement nextArrow, WebElement chooseYear, WebElement chooseMonth, WebElement chooseDay){
 		openCalendar.click();
 		navigateCurrentTitle.click();
@@ -102,15 +102,12 @@ public class BasePage{
 		nextArrow.click();
 		chooseYear.click();
 		chooseMonth.click();
-		chooseDay.click();
-			
+		chooseDay.click();		
 	}
    
     public void scrollDown(WebElement element){
-//    	JavascriptExecutor jse = (JavascriptExecutor)driver;
-//    	jse.executeScript("scroll(0, 250)");
-//    	WebElement element = driver.findElement(By.id("id_of_element"));
     	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-   
     }
+
+
 }
