@@ -9,7 +9,7 @@ public class TestRegisterData {
 	public static Object [][] RegisterData(){
 		return new Object[][]{
 				{"Amel", "Awadallah", "2", "12233", "amal.awadallah@jawwal.ps", "598024977"},
-			    {"Reem", "test", "2", "18222243875633", "amel.awadallah@gmail.com", "0598024977"}
+//			    {"Reem", "test", "2", "18222243875633", "amel.awadallah@gmail.com", "0598024977"}
 		};
 	}
 	
@@ -23,7 +23,7 @@ public class TestRegisterData {
 	@DataProvider(name = "RegisteredUserData")
 	public  static Object[][] RegisteredUserData(){
 		return new Object[][]{
-				{"Amel", "Awadallah", "2", "12233", "amal.awadallah@jawwal.ps", "598024977", "RegisteredUserData"}
+				{"RegisteredUserData"}
 		};
 	}
 	

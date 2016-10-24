@@ -69,7 +69,7 @@ public class BasePage{
  	   return message ;  
     }
     
-   public String getValidationMsg(WebElement element){
+   public String getValidationMsg(WebElement element) throws InterruptedException{
 	   String message = element.getText();
 	   return message ;   
     }

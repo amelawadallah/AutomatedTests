@@ -3,12 +3,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
 import javax.mail.MessagingException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
 import com.BasePage;
 
 public class LoginPage extends  BasePage{
@@ -45,7 +48,7 @@ public class LoginPage extends  BasePage{
 		
 
 
-	public void checkErrorsswitch(String errorType) throws IOException, MessagingException{
+	public void checkErrorsswitch(String errorType) throws IOException, MessagingException, InterruptedException{
 		switch(errorType){
 		case "EmptyEmailValidation":
 			System.out.println(getProp("emptyEmail_validation"));

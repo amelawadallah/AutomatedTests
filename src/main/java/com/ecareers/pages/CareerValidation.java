@@ -1,20 +1,11 @@
 package com.ecareers.pages;
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import com.BasePage;
 
-public class CareerFirstWizard extends BasePage {
-	
-	String firstName; 
-	String secondName;
-	String thirdName;
-	String lastName;
-	
+public class CareerValidation extends BasePage {
 	
 	@FindBy(id = "firstName") WebElement field_FirstName;
 	@FindBy(id = "secondName") WebElement field_SecondName;
@@ -33,6 +24,9 @@ public class CareerFirstWizard extends BasePage {
 	@FindBy(id = "addCareerBtn") WebElement button_AddCareerApp;
 	@FindBy(xpath = "//div[@id='careerNextBtnDiv']/button") WebElement button_Next;
 	
+
+	
+	
 	@FindBy(xpath=".//*[@id='appWizard']/div/section/fieldset[1]/div[8]/div/span[1]/button") WebElement iconCalendar;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[2]/button") WebElement calendarTitle;
 	@FindBy(xpath="//div[@id='birthDateDiv']/ul/li/div/table/thead/tr/th[3]/button") WebElement arrow_next;
@@ -40,30 +34,11 @@ public class CareerFirstWizard extends BasePage {
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthYear;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthMonth;
 	@FindBy(xpath="(//button[@type='button'])[5]") WebElement birthDay;
-	
-	@FindBy(id = "firstName") WebElement validation_EmptyFirstName;
-	@FindBy(id = "secondName") WebElement validation_EmptySecondName;
-	@FindBy(id = "thirdName") WebElement validation_EmptyThirdName;
-	@FindBy(id = "lastName") WebElement validation_EmptyLastName;
-	@FindBy(id = "nationality") WebElement validation_EmptyNationality;
-	@FindBy(id ="maritalStatus") WebElement validation_EmptyMaritalStatus;
-	@FindBy(id ="birthPlace") WebElement validation_EmptyBirthPlace;
-	@FindBy(id ="country") WebElement validation_EmptyCountry;
-	@FindBy(id = "address") WebElement validation_EmptyAddress;
-	@FindBy(id = "phoneNumber") WebElement validation_EmptyPhoneNumber;
-	
-	@FindBy(id = "birthDate") WebElement validation_WrongBirthDate;
-	@FindBy(id = "phoneNumber") WebElement validation_WrongPhoneNumber;
-	@FindBy(id = "fax") WebElement validation_WrongFax;
-	@FindBy(id = "linkedin") WebElement validation_WrongLinkedIN;
-	
-	
 		
-	public CareerFirstWizard(WebDriver driver){
+	public CareerValidation(WebDriver driver){
 		super(driver);
 		this.PAGE_TITLE="Jawwal Career";
 		this.PAGE_URL="http://10.102.5.244/ecareer/#/career";
-		
 	}
 
 	public void clickAddCareer(){
@@ -133,30 +108,24 @@ public class CareerFirstWizard extends BasePage {
 	}
 	
 	
-	public void fillNameInitials(String firstName , String secondName , String thirdName, String lastName) throws IOException{
-		setText_FirstName(firstName);
-		setText_SecondName(secondName);
-		setText_ThirdName(thirdName);
-		setText_LastName(lastName);
-	}
 	
 	
-	public void fillFlow(String firstName , String secondName , String thirdName, String lastName,
-			String gender, String nationality, String maritalStatus, String birthPlace
-			, String country , String address , String phoneNumber, String fax, String linkedinURL ) throws IOException{
-	
+	public void fillFlow(){
 		clickAddCareer();
-		fillNameInitials(firstName,secondName,thirdName, lastName  );
-		selectGender(gender);
-		selectNationality(nationality);
-		selectMaritalStatus(maritalStatus);
-		selectBirthPlace(birthPlace);
+		setText_FirstName("samer");
+		setText_SecondName("name");
+		setText_ThirdName("middle");
+		setText_LastName("test");
+		selectGender("13");
+		selectNationality("14");
+		selectMaritalStatus("16");
+		selectBirthPlace("191");
 		setText_BirthDate();
-		selectCountry(country);
-		setText_Address(address);
-		setText_PhoneNumber(phoneNumber);
-		setText_Fax(fax);
-		setText_LinkedIN(linkedinURL);
+		selectCountry("191");
+		setText_Address("ramallah");
+		setText_PhoneNumber("022892959");
+		setText_Fax("022654789");
+		setText_LinkedIN("https://www.linkedin.com/in/amel-awadallah-47579227");
 		clickNext();
 	}
 }

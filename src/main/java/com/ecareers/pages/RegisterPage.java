@@ -80,7 +80,7 @@ public class RegisterPage extends BasePage{
 	}
 	
 	public void register(String firstName , String lastName, String idType, String idNumber, String email, String mobileNumber) throws InterruptedException  {
-		Thread.sleep(5000);
+		Thread.sleep(100);
 		setText_FirstName(firstName);
 		setText_LastName(lastName);
 		selectIdType(idType);
@@ -88,21 +88,19 @@ public class RegisterPage extends BasePage{
     	setText_RegisterEmail(email);
     	setText_MobileNumber(mobileNumber);
     	click_SignUp();
-
+    	Thread.sleep(100);
 	}
 	
-	public void CheckSuccessfulRegistration() throws IOException{
+	public void CheckSuccessfulRegistration() throws IOException, InterruptedException{
 		wait.until(ExpectedConditions.visibilityOf(message_successRegistration));
-    	Assert.assertEquals(message_successRegistration.getText(),getProp("successRegistration"));
-    	System.out.println(message_successRegistration.getText());
+		Assert.assertEquals(getValidationMsg(message_successRegistration),getProp("successRegistration"));
     	click_Accept();
 		
 	}
 	
-	public void checkEmptyFieldsErrors(String errorType ) throws IOException, MessagingException{
+	public void checkEmptyFieldsErrors(String errorType ) throws IOException, MessagingException, InterruptedException{
 		switch(errorType){
 		case "EmptyfieldsValidation":
-			System.out.println("Switch case......" );
 			Assert.assertEquals( getValidationMsg(validation_EmptyFirstName),getProp("emptyFirstName") );
 			Assert.assertEquals( getValidationMsg(validation_EmptyLastName),getProp("emptyLastName") );
 			Assert.assertEquals( getValidationMsg(validation_EmptyIdType), getProp("emptyIdType"));	
@@ -120,8 +118,7 @@ public class RegisterPage extends BasePage{
 			Assert.assertEquals( getValidationMsg(validation_WrongEmailFormat), getProp("wrongEmailFormat"));
 			Assert.assertEquals( getValidationMsg(validation_WrongMobileNumber), getProp("wrongMobileFormat"));
 			break;
-		default:
-			System.out.println(".......Debugging.....");
+	
 		}		
 	}	
 }

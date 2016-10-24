@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.WebBaseTests;
+import com.ecareers.data.TestFirstWizard;
 import com.ecareers.pages.CareerFirstWizard;
 import com.ecareers.pages.CareerFourthWizard;
 import com.ecareers.pages.CareerSecondWizard;
@@ -30,12 +31,12 @@ public class CareerTest extends WebBaseTests{
 		careerFourthWzrd = PageFactory.initElements(driver, CareerFourthWizard.class);
 	}
 
-	@Test
+	@Test(dataProvider = "CorrectData" , dataProviderClass= TestFirstWizard.class)
 	public void testCareer () throws InterruptedException{
 		loginPg.loadPage();
 		loginPg.loginToProfile("sari@testjawwal.com", "123456");
 		Thread.sleep(2000);
-		careerFirstWzrd.fillFlow();		
+//		careerFirstWzrd.fillFlow(String firstName ,);		
 	}
 	
 	@Test(dependsOnMethods = "testCareer")

@@ -1,9 +1,12 @@
 package com.ecareers.tests;
 import java.io.IOException;
+
 import javax.mail.MessagingException;
+
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import com.WebBaseTests;
 import com.ecareers.data.TestLoginData;
 import com.ecareers.pages.LoginPage;
@@ -18,21 +21,21 @@ public class LoginTest extends WebBaseTests{
 	}
 
 //	@Test( dataProvider = "loginData" , dataProviderClass = TestLoginData.class)
-	public void testLoginSuccess (String email , String password ,String errorType) throws IOException, MessagingException{
+	public void testLoginSuccess (String email , String password ,String errorType) throws IOException, MessagingException, InterruptedException{
 		loginPg.loadPage();
 		loginPg.loginToProfile(email, password);
 		loginPg.checkErrorsswitch(errorType);
 	}
 	
 //	@Test( dataProvider = "wrongLoginData" , dataProviderClass = TestLoginData.class)
-	public void testWrongCredentials (String email , String password ,String errorType) throws IOException, MessagingException{
+	public void testWrongCredentials (String email , String password ,String errorType) throws IOException, MessagingException, InterruptedException{
 		loginPg.loadPage();
 		loginPg.loginToProfile(email, password);
 		loginPg.checkErrorsswitch(errorType);
 	}
 
 	@Test( dataProvider = "loginDataValidation" , dataProviderClass = TestLoginData.class)
-	public void testfieldValidation (String email , String password ,String errorType) throws IOException, MessagingException{
+	public void testfieldValidation (String email , String password ,String errorType) throws IOException, MessagingException, InterruptedException{
 		loginPg.loadPage();
 		loginPg.loginToProfile(email, password);
 		loginPg.checkErrorsswitch(errorType);
