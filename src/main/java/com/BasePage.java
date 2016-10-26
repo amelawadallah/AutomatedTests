@@ -2,6 +2,8 @@ package com;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -18,6 +20,7 @@ public class BasePage{
 	public WebDriverWait wait;
 	public String PAGE_URL;
 	public String PAGE_TITLE;
+	public List<WebElement> elementsList =new ArrayList<WebElement>();
 	
 	public BasePage(WebDriver driver){
 		this.driver = driver ;
@@ -49,19 +52,24 @@ public class BasePage{
 		element.clear();
 		element.sendKeys(text);
 		Assert.assertEquals(element.getAttribute("value"),text);
+		elementsList.add(element);
 	}
 	 
     public void selectValueInList(WebElement dropdown, String value){
         Select select = new Select(dropdown);
         select.selectByValue(value);
+		elementsList.add(dropdown);
+
     }
     
     public void selectTextInList(WebElement dropdown, String text){
     	dropdown.sendKeys(text);
+		elementsList.add(dropdown);
     }
     
     public void clickRadioButton(WebElement element){
     	element.click();
+    	
     }  
     
     public String getPopupMsg(WebElement element){
@@ -71,7 +79,8 @@ public class BasePage{
     
    public String getValidationMsg(WebElement element) throws InterruptedException{
 	   String message = element.getText();
-	   return message ;   
+	   return message ;
+	   
     }
    
    
